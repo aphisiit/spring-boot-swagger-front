@@ -26,4 +26,34 @@ public class EmployeeServiceImpl extends RestService implements EmployeeService 
         return getResultString(url,entity);
     }
 
+    public ResponseEntity<String> findOne(Long id){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type","application/json; charset=utf-8");
+
+        HttpEntity<String> entity = new HttpEntity<String>("", headers);
+        String method = "";
+        String url = "/employees/findOne/" + id;
+        return getResultString(url,entity);
+    }
+
+    public ResponseEntity<String> findByFirstName(String firstName){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type","application/json; charset=utf-8");
+
+        HttpEntity<String> entity = new HttpEntity<String>("", headers);
+        String method = "";
+        String url = "/employees/findByFirstName?firstName=" + firstName;
+        return getResultString(url,entity);
+    }
+
+    public ResponseEntity<String> findByLastName(String lastName){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type","application/json; charset=utf-8");
+
+        HttpEntity<String> entity = new HttpEntity<String>("", headers);
+        String method = "";
+        String url = "/employees/findByLastName?lastName=" + lastName;
+        return getResultString(url,entity);
+    }
+
 }
