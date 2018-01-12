@@ -62,7 +62,6 @@ public abstract class RestService {
 
     public String getResultString(String urlParam, String param) {
         String url = this.EngineServer + urlParam;
-
         return restTemplate.getForObject(url, String.class, param);
     }
 
