@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 @Configuration
-public abstract class AbstractEngineService {
+public abstract class RestService {
     @Value("${EngineServer}")
     protected String EngineServer = "";//"localhost:8080/Engine/rest";
     protected static Properties connectProperties = null;
@@ -22,14 +22,14 @@ public abstract class AbstractEngineService {
     public abstract void setRestTemplate(RestTemplate restTemplate);
 
 
-    public AbstractEngineService() {
+    public RestService () {
     }
 
     public String getWebServicesString() {
         return webServicesString;
     }
 
-    public AbstractEngineService setWebServicesString(String webServicesString) {
+    public RestService  setWebServicesString(String webServicesString) {
         this.webServicesString = webServicesString;
         return this;
     }
