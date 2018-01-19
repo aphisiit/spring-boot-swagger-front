@@ -1,5 +1,7 @@
 package com.swagger.front.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +12,9 @@ import org.springframework.web.client.RestTemplate;
 @Service("EmployeeService")
 public class EmployeeServiceImpl extends RestService implements EmployeeService {
 
+    private Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
+
+    @SuppressWarnings("All")
     @Override
     @Autowired
     public void setRestTemplate(RestTemplate restTemplate) {
@@ -23,7 +28,12 @@ public class EmployeeServiceImpl extends RestService implements EmployeeService 
         HttpEntity<String> entity = new HttpEntity<String>("", headers);
         String method = "";
         String url = "/employees/findAllEmployee";
-        return getResultString(url,entity);
+        try {
+            return getResultString(url,entity);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
     public ResponseEntity<String> findOne(Long id){
@@ -33,7 +43,13 @@ public class EmployeeServiceImpl extends RestService implements EmployeeService 
         HttpEntity<String> entity = new HttpEntity<String>("", headers);
         String method = "";
         String url = "/employees/findOne/" + id;
-        return getResultString(url,entity);
+
+        try {
+            return getResultString(url,entity);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
     public ResponseEntity<String> findByFirstName(String firstName){
@@ -43,7 +59,13 @@ public class EmployeeServiceImpl extends RestService implements EmployeeService 
         HttpEntity<String> entity = new HttpEntity<String>("", headers);
         String method = "";
         String url = "/employees/findByFirstName?firstName=" + firstName;
-        return getResultString(url,entity);
+
+        try {
+            return getResultString(url,entity);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
     public ResponseEntity<String> findByLastName(String lastName){
@@ -53,7 +75,13 @@ public class EmployeeServiceImpl extends RestService implements EmployeeService 
         HttpEntity<String> entity = new HttpEntity<String>("", headers);
         String method = "";
         String url = "/employees/findByLastName?lastName=" + lastName;
-        return getResultString(url,entity);
+
+        try {
+            return getResultString(url,entity);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
 }

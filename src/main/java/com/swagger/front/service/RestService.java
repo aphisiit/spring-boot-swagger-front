@@ -11,7 +11,7 @@ import java.util.*;
 @Configuration
 public abstract class RestService {
     @Value("${EngineServer}")
-    protected String EngineServer = "";//"localhost:8080/Engine/rest";
+    protected String EngineServer;
     protected static Properties connectProperties = null;
 
     protected String webServicesString = "";
